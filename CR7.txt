@@ -1,0 +1,33 @@
+//FileReader class and read method using under io package. 
+                
+import java.io.*;
+public class Main {
+    public static void main(String[] args){
+        try {
+            FileReader fw = new FileReader("C:\\Users\\Sahitya\\Desktop\\CR7.txt");
+            try {
+                int i ;
+                while ((i=fw.read())!=-1) {
+                    System.out.print((char) i);
+                }
+            } finally {
+                fw.close();
+            }
+        }
+         catch(IOException  e) {
+             System.out.println("File are readed succesfully.");
+            }
+    }
+}
+
+//
+//🐐 CR7️⃣(UR CRISTIANO)
+//
+//Full name  :  Cristiano Ronaldo dos Santos Aveiro
+//Date of birth  :  5 February 1985 (age 39)
+//Place of birth  :  Funchal, Madeira, Portugal
+//Height  :  1.87 m (6 ft 2 in)
+//Position(s)  :  Forward
+//Recent Team  :  PORTUGAL 
+//
+//        ⚽⚽⚽⚽SUIIIIIIIIIIIIIIIIIIIIIIIIIII⚽⚽⚽⚽
