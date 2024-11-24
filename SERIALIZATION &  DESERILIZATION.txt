@@ -1,0 +1,53 @@
+import java.io.*;
+
+class student implements Serializable {
+    private static final long serialVersionUID = 1L; // Ensure proper serialization
+    public int roll;
+    public String name;
+
+    //constructer
+
+    public student(int roll, String name) {
+        this.roll = roll;
+        this.name = name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        student s1 = new student(215, "SAHITYA GHOSH");
+
+        // Serialize the student object to a file
+        try {
+            FileOutputStream fileOut = new FileOutputStream("C:\\Users\\Sahitya\\Desktop\\testserialization.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(s1);
+            out.close();
+            fileOut.close();
+            System.out.println("Serialized data is saved in testserialization.txt");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+//Exception handling
+
+        // Deserialize the student object from the file
+        try {
+            FileInputStream fileIn = new FileInputStream("C:\\Users\\Sahitya\\Desktop\\testserialization.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            student st = (student) in.readObject();     //Type casting for object
+            in.close();
+            fileIn.close();
+
+            System.out.println("Deserialized Student...");
+            System.out.println("Roll: " + st.roll);
+            System.out.println("Name: " + st.name);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException c) {
+            System.out.println("Student class not found");
+            c.printStackTrace();       //Better exception handling
+        }
+    }
+}
